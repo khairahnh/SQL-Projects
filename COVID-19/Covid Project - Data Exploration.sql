@@ -28,8 +28,9 @@ Order by PercentPopulationInfection desc
 --4
 Select location,population,date, MAX(total_cases) as HighestInfectionCount, MAX((total_cases/population))*100 as PercentPopulationInfected
 From PortfolioProjects..Covid19
+where location not in ('World', 'European', 'International', 'Upper middle income', 'High Income', 'Lower middle income', 'low income', 'European Union')
 Group By location, population, date
-Order by PercentPopulationInfected desc
+Order by location
 
 ----5
 Select continent, location, population, MAX(CAST(people_fully_vaccinated as bigint)) as TotalVaccination, MAX((CAST(people_fully_vaccinated as bigint))/population)*100 as PercentPopulationVaccination
